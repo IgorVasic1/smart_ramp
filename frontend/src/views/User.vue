@@ -60,10 +60,10 @@ export default {
         mdiMenu: mdiMenu,
       },
       tabs: [
-        { name: 'Profil', to: '/user' },
-        { name: 'Dashboard', to: '/dashboard' },
-        { name: 'Users', to: '/users' },
-        { name: 'Cars', to: '/cars' },
+      { name: 'Prikaz Podataka', to: '/dashboard' },
+        { name: 'Profil', to: '/users' },
+        { name: 'Automobili', to: '/cars' },
+        { name: 'Korisnici', to: '/user' },
       ],
       isSmallScreen: false,
     };
