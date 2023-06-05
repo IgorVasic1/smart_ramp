@@ -1,5 +1,5 @@
 <template>
-  <v-app >
+  <v-app :style="{ backgroundColor: backgroundColor }">
     <template-default/>
   </v-app>
 </template>
@@ -16,6 +16,11 @@ export default {
   data: () => ({
     //
   }),
+  computed: {
+    backgroundColor() {
+      return this.$vuetify.theme.dark ? '#212121' : '#ECEFF1';
+    }
+  }
 };
 </script>
 <style>

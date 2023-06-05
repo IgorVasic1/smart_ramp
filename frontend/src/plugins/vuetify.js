@@ -50,7 +50,7 @@ export default new Vuetify({
         error: '#ec4234',
         success: '#00a86b',
         warning: '#ffba13',
-        background: '#f1f1f1',
+        background: '#CFD8DC',
         lightGrey: '#e4e5e6',
         blackish: '#232c33',
         lineColor: '#dedede',
@@ -79,7 +79,7 @@ export default new Vuetify({
         checkInputColor: '#E3F2FD',
         adminChipText: '#0FE0ED',
         contentChipText: '#0052BC',
-        viewerChipText: '#2B85D8'
+        viewerChipText: '#2B85D8',
       },
     },
   },

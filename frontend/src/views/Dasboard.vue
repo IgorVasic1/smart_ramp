@@ -1,41 +1,9 @@
 <template>
   <div>
-    <v-row>
-      <v-tabs
-        height="100px"
-        style="border-bottom: 1px solid var(--v-borderColor-base);"
-      >
-        <v-col class="py-10">
-          <span class="heading py-6 mt-5 ml-6">
-            {{ this.$route.name === 'dashboard' ? 'Prikaz Podataka' : this.$route.name }}
-          </span>
-        </v-col>
-        <v-col class="text-right py-10">
-          <v-menu offset-y>
-            <template v-slot:activator="{ on }">
-              <v-btn icon v-on="on" v-show="isSmallScreen">
-                <v-icon>{{ icon.mdiMenu }}</v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item
-                v-for="(tab, index) in tabs"
-                :key="index"
-                :to="tab.to"
-                exact
-              >
-                <v-list-item-title>{{ tab.name }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </v-col>
-      </v-tabs>
-    </v-row>
-
     <TemplateFeed>
-      <WeatherPanel class="pa-0" slot="square" />
-      <ChartPanel class="pa-0" slot="square1" />
-      <HLS class="pa-0" slot="square2" />
+      <WeatherPanel class="pa-0 mt-16" slot="square" />
+      <ChartPanel class="pa-0 mt-16" slot="square1" />
+      <HLS class="pa-0 mt-16" slot="square2" />
       <Parking slot="square3" />
     </TemplateFeed>
   </div>
@@ -68,7 +36,7 @@ export default {
         { name: 'Automobili', to: '/cars' },
         { name: 'Korisnici', to: '/user' },
       ],
-      isSmallScreen: false,
+      isSmallScreens: false,
     };
   },
   methods: {
@@ -81,8 +49,11 @@ export default {
   },
   computed: {
     isSmallScreen() {
-      return this.isSmallScreen; // Return the value from data
+      return this.isSmallScreens; // Return the value from data
     },
+    color() {
+      return this.$vuetify.theme.dark ? '#ECEFF1' : 'gray';
+    }
   },
   mounted() {
     this.updateScreenSize(); // Initial check
@@ -99,7 +70,6 @@ export default {
   border-radius: 0px;
   border-top: none;
 }
-
 .heading {
   font-size: 24px;
   font-weight: 500;

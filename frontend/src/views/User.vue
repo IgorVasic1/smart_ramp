@@ -1,41 +1,9 @@
 <template>
   <div>
-    <v-row>
-      <v-tabs
-        height="100px"
-        style="border-bottom: 1px solid var(--v-borderColor-base);"
-      >
-        <v-col class="py-10">
-          <span class="heading py-6 mt-5 ml-6">
-            {{ this.$route.name === 'user' ? 'Profil' : this.$route.name }}
-          </span>
-        </v-col>
-        <v-col class="text-right py-10">
-          <v-menu offset-y>
-            <template v-slot:activator="{ on }">
-              <v-btn icon v-on="on" v-show="isSmallScreen">
-                <v-icon>{{ icon.mdiMenu }}</v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item
-                v-for="(tab, index) in tabs"
-                :key="index"
-                :to="tab.to"
-                exact
-              >
-                <v-list-item-title>{{ tab.name }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </v-col>
-      </v-tabs>
-    </v-row>
-
     <TemplateFeed>
       <WeatherPanel class="pa-0" slot="square" />
-      <Profile class="pa-0" slot="section-one" />
-      <Car class="pa-0" slot="section-two" />
+      <Profile class="pa-6 ml-3 mt-14" slot="section-one" />
+      <Car class="pa-6 mt-14" slot="section-two" />
     </TemplateFeed>
   </div>
 </template>
@@ -80,6 +48,9 @@ export default {
     isSmallScreen() {
       return this.isSmallScreen; // Return the value from data
     },
+    color() {
+      return this.$vuetify.theme.dark ? '#ECEFF1' : 'gray';
+    }
   },
   mounted() {
     this.updateScreenSize(); // Initial check

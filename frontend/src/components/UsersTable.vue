@@ -4,7 +4,9 @@
       :headers="accountHeaders"
       :items="accounts"
       item-value="name"
-      class="elevation-1 pa-0"
+      elevation="0"
+      style="position: relative; border-top-left-radius: 50px;"
+      class="pa-0 mt-4"
     ></v-data-table>
     
   </template>

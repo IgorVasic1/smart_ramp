@@ -1,37 +1,61 @@
 <template>
   <v-row>
-    <v-col class="pa-0" cols="2" lg="2" md="2" v-if="isLargeScreen">
+    <v-col class="pa-0 mt-12" cols="3" lg="3" md="3" v-if="isLargeScreen">
       <slot name="square" />
     </v-col>
     <v-col :cols="getColumnSize()" v-if="isDashboardView">
       <v-row>
-        <v-col class="pa-0" cols="12" md="6">
+        <v-col>
+          <slot name="nav-bar" />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="py-6 pr-3 pl-6" cols="12" md="6">
           <slot name="square1" />
         </v-col>
-        <v-col class="pa-0" cols="12" md="6">
+        <v-col class="pl-3 pr-6 py-6" cols="12" md="6">
           <slot name="square2" />
         </v-col>
       </v-row>
       <v-row>
-        <v-col class="pa-0" cols="12" md="12">
+        <v-col class="pt-0 pl-6 pr-6 pb-6" cols="12" md="12">
           <slot name="square3" />
         </v-col>
       </v-row>
     </v-col>
     <v-col class="pa-0" v-else-if="isUsersView || isCarsView">
-      <v-col class="pa-0" cols="12" md="12">
+      <v-row class="ml-0">
+        <v-col>
+          <slot name="nav-bar" />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="px-10 pt-5 pb-0" cols="12" md="12">
+          <slot name="search" />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="px-10" cols="12" md="12">
         <slot :name="getContentSlotName()" />
       </v-col>
-      <v-col>
+      </v-row>
+      <v-row class="pt-16 mt-16 pr-4" >
+        <v-col>
         <slot name="speed-dial" />
       </v-col>
+      </v-row>
     </v-col>
     <v-col class="pa-0" v-else-if="isUserView">
-      <v-row>
-        <v-col class="pr-0" cols="12" md="4">
+        <v-row class="ml-0">
+        <v-col>
+          <slot name="nav-bar" />
+        </v-col>
+      </v-row>
+      <v-row class="pa-0">
+        <v-col class="pl-8 py-12" cols="12" md="4">
           <slot name="section-one" />
         </v-col>
-        <v-col class="pa-0" cols="12" md="8">
+        <v-col class="pr-10 py-12" cols="12" md="8">
           <slot name="section-two" />
         </v-col>
       </v-row>
@@ -60,7 +84,7 @@ export default {
   },
   methods: {
     getColumnSize() {
-      return this.isLargeScreen ? 10 : 12;
+      return this.isLargeScreen ? 9 : 12;
     },
     getContentSlotName() {
       return this.isCarsView ? 'cars-table' : 'users-table';

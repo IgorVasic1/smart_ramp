@@ -1,9 +1,9 @@
 <template>
     <v-navigation-drawer
         app
-        color="#003e76"
         width="100"
         dark
+        color="#184264d9"
         class="nav-drawer"
         mobile-breakpoint="600"
     ><!--Add avatar above list with avatar.png inside -->
@@ -100,7 +100,7 @@
   }
   
   .v-navigation-drawer {
-    z-index: 999;
+    z-index:2;
   }
   
   ::v-deep {
@@ -110,6 +110,6 @@
   }
   
   .nav-drawer {
-    z-index: 900;
+    z-index: 1;
   }
   </style>

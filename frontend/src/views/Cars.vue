@@ -1,47 +1,17 @@
 <template>
   <div>
-    <v-row>
-      <v-tabs
-        height="100px"
-        style="border-bottom: 1px solid var(--v-borderColor-base);"
-      >
-        <v-col class="py-10">
-          <span class="heading py-6 mt-5 ml-6">
-            {{ this.$route.name === 'cars' ? 'Vozila' : this.$route.name }}
-          </span>
-        </v-col>
-        <v-col class="text-right py-10">
-          <v-menu offset-y>
-            <template v-slot:activator="{ on }">
-              <v-btn icon v-on="on" v-show="isSmallScreen">
-                <v-icon>{{ icon.mdiMenu }}</v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item
-                v-for="(tab, index) in tabs"
-                :key="index"
-                :to="tab.to"
-                exact
-              >
-                <v-list-item-title>{{ tab.name }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </v-col>
-      </v-tabs>
-    </v-row>
-
     <TemplateFeed>
       <WeatherPanel class="pa-0" slot="square" />
-      <CarTable class="pa-0" slot="cars-table" />
-      <SpeedDial style="margin-top: 280px;" slot="speed-dial" />
+      <Search class="mt-4" slot="search"/>
+      <CarTable class="pa-6" slot="cars-table" />
+      <SpeedDial slot="speed-dial" />
     </TemplateFeed>
   </div>
 </template>
 
 <script>
 import { mdiMenu } from "@mdi/js";
+import Search from "@/components/Search";
 import TemplateFeed from "@/layouts/TemplateFeed";
 import WeatherPanel from "@/components/WeatherPanel";
 import CarTable from "@/components/CarTable";
@@ -53,6 +23,7 @@ export default {
     WeatherPanel,
     CarTable,
     SpeedDial,
+    Search,
   },
   data: function () {
     return {
@@ -80,6 +51,9 @@ export default {
     isSmallScreen() {
       return this.isSmallScreen; // Return the value from data
     },
+    color() {
+      return this.$vuetify.theme.dark ? '#ECEFF1' : 'gray';
+    }
   },
   mounted() {
     this.updateScreenSize(); // Initial check

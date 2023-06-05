@@ -4,8 +4,10 @@
       :headers="carHeaders"
       :items="cars"
       item-value="name"
-      class="elevation-1 pa-0"
-    ></v-data-table>
+      elevation="0"
+      class="pa-0 mt-4"
+      style="position: relative; border-top-left-radius: 50px;"
+      ></v-data-table>
     
   </template>
   

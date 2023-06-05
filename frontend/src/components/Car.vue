@@ -1,7 +1,7 @@
 <template>
-    <v-card outlined class="mt-3">
+    <v-card outlined height="380">
       <v-card-title class="text-h5">Car Information</v-card-title>
-      <v-card-text class="pb-10">
+      <v-card-text >
         <v-list dense>
           <v-list-item>
             <v-list-item-content>
