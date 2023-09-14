@@ -1,14 +1,14 @@
 <template>
-  <v-card class="weather-panel mt-16 pa-8" outlined>
+  <v-card class="weather-panel px-16 mt-18" outlined>
     <v-card-title class="weather-title" style="color: #184264d9;">Vrijeme</v-card-title>
     <v-divider class="py-6"></v-divider>
     <div class="weather-stats">
       <div class="weather-stat-item">
-        <v-icon class="weather-stat-icon" style="color: #184264d9;">mdi-weather-windy</v-icon>
+        <v-icon class="weather-stat-icon" style="color: red;">mdi-weather-windy</v-icon>
         <span class="weather-stat-value" style="color: #184264d9;">123 km/h</span>
       </div>
       <div class="weather-stat-item">
-        <v-icon class="weather-stat-icon" style="color: #184264d9;">mdi-weather-pouring</v-icon>
+        <v-icon class="weather-stat-icon" style="color: gray;">mdi-weather-pouring</v-icon>
         <span class="weather-stat-value" style="color: #184264d9;">48%</span>
       </div>
     </div>
@@ -23,7 +23,7 @@
             class="weather-forecast-item"
           >
             <span class="weather-forecast-day" style="color: #184264d9;">{{ item.day }}</span>
-            <v-icon class="weather-forecast-icon" style="color: #184264d9;">{{ item.icon }}</v-icon>
+            <v-icon class="weather-forecast-icon" :style="{ color: changeColor() }">{{ item.icon }}</v-icon>
             <span class="weather-forecast-temp" style="color: #184264d9;">{{ item.temp }}</span>
           </v-col>
         </v-row>
@@ -39,23 +39,23 @@
           color="#184264d9"
         ></v-progress-linear>
       </v-card-text>
-      <v-card-subtitle class="pt-0 pb-6" style="color: #184264d9;">Popunjenost parkinga 60%</v-card-subtitle>
-      <v-card outlined style="border: 1px solid #EEEEEE;" class="weather-card">
+      <v-card-subtitle class="pt-0 pb-6">Popunjenost parkinga 60%</v-card-subtitle>
+      <v-card outlined class="weather-card">
         <div class="weather-stats">
           <div class="weather-stats-title">
-            <v-icon class="weather-stats-icon" style="color: #184264d9;">{{ icons.mdiAccountMultiple }}</v-icon>
-            <span class="weather-stats-value pl-1 font-weight-bold" style="color: #184264d9;">233</span>
-            <span class="weather-stats-value pl-4" style="color: #184264d9;">Korisnici</span>
+            <v-icon class="weather-stats-icon">{{ icons.mdiAccountMultiple }}</v-icon>
+            <span class="weather-stats-value pl-1 font-weight-bold">233</span>
+            <span class="weather-stats-value pl-4" >Korisnici</span>
           </div>
         </div>
       </v-card>
 
-      <v-card outlined style="border: 1px solid #EEEEEE;" class="weather-card">
+      <v-card outlined class="weather-card">
         <div class="weather-stats">
           <div class="weather-stats-title">
-            <v-icon class="weather-stats-icon" style="color: #184264d9;">{{ icons.mdiCarBack }}</v-icon>
-            <span class="weather-stats-value pl-1 font-weight-bold" style="color: #184264d9;">122</span>
-            <span class="weather-stats-value pl-4" style="color: #184264d9;">Automobili</span>
+            <v-icon class="weather-stats-icon">{{ icons.mdiCarBack }}</v-icon>
+            <span class="weather-stats-value pl-1 font-weight-bold">122</span>
+            <span class="weather-stats-value pl-4" >Automobili</span>
           </div>
         </div>
       </v-card>
@@ -63,9 +63,9 @@
       <v-card outlined style="border: 1px solid #EEEEEE;" class="weather-card mb-16">
         <div class="weather-stats">
           <div class="weather-stats-title">
-            <v-icon class="weather-stats-icon" style="color: #184264d9;">{{ icons.mdiParking }}</v-icon>
-            <span class="weather-stats-value pl-1 font-weight-bold" style="color: #184264d9;">78</span>
-            <span class="weather-stats-value pl-4" style="color: #184264d9;">Parking Mjesta</span>
+            <v-icon class="weather-stats-icon">{{ icons.mdiParking }}</v-icon>
+            <span class="weather-stats-value pl-1 font-weight-bold">78</span>
+            <span class="weather-stats-value pl-4">Parking Mjesta</span>
           </div>
         </div>
       </v-card>
@@ -99,7 +99,7 @@ export default {
     labels: { 0: 'SU', 1: 'MO', 2: 'TU', 3: 'WED', 4: 'TH', 5: 'FR', 6: 'SA' },
     time: 0,
     forecast: [
-      { day: 'Monday', icon: mdiWeatherSunny, temp: '24\xB0/12\xB0' },
+      { day: 'Monday', icon: mdiWeatherSunny, temp: '24\xB0/12\xB0'},
       { day: 'Tuesday', icon: mdiWeatherSunny, temp: '22\xB0/14\xB0' },
       { day: 'Wednesday', icon: mdiWeatherSunny, temp: '22\xB0/14\xB0' },
       { day: 'Thursday', icon: mdiCloudAlert, temp: '25\xB0/15\xB0' },
@@ -108,7 +108,19 @@ export default {
       { day: 'Sunday', icon: mdiWeatherSunny, temp: '24\xB0/12\xB0' },
     ],
   }),
+  methods:{
+    changeColor() {
+  return this.forecast.map(item => {
+    if (item.icon === this.icons.mdiWeatherSunny) {
+      return 'yellow';
+    } else {
+      return 'gray';
+    }
+  });
+},
+  }
 }
+
 </script>
 
 <style scoped>
@@ -123,7 +135,9 @@ export default {
   border-bottom-left-radius: 0; /* Set border radius of bottom left corner */
 }
 .weather-card{
-  border-color:red;
+  background-color: #184264d9 !important;
+  border-radius: 10px;
+  color: #ffff !important;
 }
 
 .weather-panel.theme--dark {

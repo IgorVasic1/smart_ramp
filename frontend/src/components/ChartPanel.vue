@@ -15,16 +15,16 @@ export default {
       series: [{
             name: 'Broj Automobila',
             data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 67, 68, 69],
-            colors: ['#FF0000', '#00FF00', '#0000FF'],
+            color: '#184264d9',
           }, {
             name: 'Broj Osoba',
             data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 94, 94, 94],
-            colors: ['#FF0000', '#00FF00', '#0000FF'],
+            color: '#CFD8DC',
           },
           {
             name: 'Broj Životinja',
             data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 44, 44, 44],
-            colors: ['#FF0000', '#00FF00', '#0000FF'],
+            color:'#78909C'
           }
         
         ],

@@ -13,7 +13,7 @@
           class="py-1"
       >
         <v-list-item class="pl-2">
-          <v-list-item-avatar outlined size="65" @click="toggleModal" style="cursor: pointer">
+          <v-list-item-avatar outlined size="65" style="cursor: pointer">
             <img
                 src="../assets/avatar.png"
                 alt="avatar"/>

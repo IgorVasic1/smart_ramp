@@ -48,9 +48,6 @@ export default {
     },
   },
   computed: {
-    isSmallScreen() {
-      return this.isSmallScreens; // Return the value from data
-    },
     color() {
       return this.$vuetify.theme.dark ? '#ECEFF1' : 'gray';
     }

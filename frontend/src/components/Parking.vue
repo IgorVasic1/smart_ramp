@@ -7,17 +7,18 @@
         </v-col>
         <v-col cols="4">
           <v-card outlined elevation="0" v-for="(parking, i) in info.data" :key="i" class="parking-card px-4">
-                <v-card-title class="pb-6" v-on="on">
+                <v-card-title style="color: #184264d9;" class="pb-6" v-on="on">
                   {{ parking.name }}
                   <v-spacer></v-spacer>
                   <v-icon large class="ml-4">{{ mdiCar }}</v-icon>
-                  <span>{{ parking.normal_occupied }}</span>/
-                  <span>{{ parking.capacity }}</span>
+                  <span style="color: #184264d9;">{{ parking.normal_occupied }}/</span>
+                  <span style="color: #184264d9;">{{ parking.capacity }}</span>
+                  <v-icon class="weather-stats-icon pl-2" style="color: #184264d9;">{{ icons.mdiCarBack }}</v-icon>
                 </v-card-title>
                   <v-progress-linear
-                    :value="parking.normal_occupied"
-                    :max="parking.capacity"
-                    color="green"
+                    :value="parking.normal_occupied * 100 / parking.capacity"
+                    :max="parking.capacity*100"
+                    color="#184264d9"
                     class="pb-0 pl-4 pr-4 mb-0"
                     height="5"
                   >
@@ -33,7 +34,7 @@
 
 <script>
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
-import { mdiCar, mdiCarHatchback } from '@mdi/js';
+import { mdiCar, mdiCarBack, mdiParking  } from '@mdi/js';
 import axios from 'axios';
 
 export default {
@@ -41,6 +42,10 @@ export default {
     return {
       parkData: [],
       info: null,
+      icons: {
+      mdiCarBack: mdiCarBack,
+      mdiParking: mdiParking,
+    },
     };
   },
   mounted() {
@@ -60,7 +65,18 @@ export default {
           const map = new google.maps.Map(document.querySelector('.google-map'), {
             zoom: 8,
             center: { lat: 43.915886, lng: 17.679076 },
-
+            styles: [
+          // Add your custom map style JSON here
+          {
+            "featureType": "all",
+            "elementType": "geometry",
+            "stylers": [
+              {
+                "color": "#CFD8DC" // Change this color to your desired color
+              }
+            ]
+          }
+        ]
           });
           let markers = [];
           // Loop through the data and add markers to the map
@@ -72,6 +88,10 @@ export default {
                   lng: space.lng,
                 },
                 map: map,
+                icon: {
+                  url: 'path/to/custom-marker.png', // Replace with the path to your custom marker icon
+                  scaledSize: new google.maps.Size(32, 32), // Adjust the size of the marker icon as needed
+                },
               });
               markers.push(marker);
             });
@@ -89,6 +109,7 @@ export default {
 <style scoped>
 .parking-card {
   margin-bottom: 10px;
+  border:1px solid #EEEEEE;
 }
 
 .v-tooltip__content {

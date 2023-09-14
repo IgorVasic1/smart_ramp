@@ -1,15 +1,15 @@
 <template>
   <div style="display:flex; margin-top: 190px; justify-content:center; align-items:center; height:100%;" class="card-container">
-      <v-card v-model="dialog" max-width="600px" min-width="360px" elevation="0">
+      <v-card v-model="dialog" max-width="61vh" min-width="360px" elevation="0">
           <div>
               <v-tabs v-model="tab" show-arrows background-color="#184264d9" icons-and-text dark grow>
                   <v-tabs-slider color="purple darken-4"></v-tabs-slider>
-                  <v-tab v-for="i in tabs" :key="i">
-                      <v-icon large>{{ i.icon }}</v-icon>
-                      <div class="caption py-1">{{ i.name }}</div>
+                  <v-tab v-for="(item, i) in tabs" :key="i">
+                      <v-icon large>{{ item.icon }}</v-icon>
+                      <div class="caption py-1">{{ item.name }}</div>
                   </v-tab>
                   <v-tab-item>
-                      <v-card class="px-4">
+                      <v-card class="px-10">
                           <v-card-text>
                               <v-form ref="loginForm" v-model="valid" lazy-validation>
                                   <v-row class="d-flex justify-center align-center">
@@ -25,7 +25,7 @@
                                         <v-col class="d-flex justify-center align-center" cols="12" lg="8" md="8" sm="8" xsm="8">
                                           <v-btn style="text-transform: none;" class="white--text" large block :disabled="!valid" color="#184264d9" @click="validate"><v-icon class="mr-3">mdi-account-circle-outline</v-icon> Prijava na sustav</v-btn>
                                       </v-col>
-                                      <v-col class="d-flex justify-center align-center mb-8" cols="8" >
+                                      <v-col class="d-flex justify-center align-center mb-8" >
                                             <div ref="googleLoginBtn" />
                                         </v-col>
                                     </v-row>
@@ -34,7 +34,7 @@
                       </v-card>
                   </v-tab-item>
                   <v-tab-item>
-                      <v-card class="px-4" tile>
+                      <v-card class="px-14" tile>
                           <v-card-text>
                               <v-form ref="registerForm" v-model="valid" lazy-validation>
                                   <v-row>
@@ -109,7 +109,7 @@ export default {
           this.$refs.googleLoginBtn, {
             text: "Login",
             size: "large",
-            width: "350",
+            width: "320",
             height: "100",
             theme: "outline"
           }

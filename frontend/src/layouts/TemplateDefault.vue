@@ -7,27 +7,6 @@
         <v-tabs
         style="position: absolute;" height="250px" class="custom-tabs"
         >
-          <v-col class="pt-8">
-          </v-col>
-          <v-col class="text-right py-10">
-            <v-menu offset-y>
-              <template v-slot:activator="{ on }">
-                <v-btn icon v-on="on" v-show="isSmallScreen">
-                  <v-icon>{{ icon.mdiMenu }}</v-icon>
-                </v-btn>
-              </template>
-              <v-list>
-                <v-list-item
-                  v-for="(tab, index) in tabs"
-                  :key="index"
-                  :to="tab.to"
-                  exact
-                >
-                  <v-list-item-title>{{ tab.name }}</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-          </v-col>
         </v-tabs>
         </v-row>
           <router-view></router-view>
